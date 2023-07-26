@@ -22,28 +22,33 @@ const Note = ({ id, title, content, pinned, color, image, onDelete, onPin, onCol
 
   return (
     <div className={`note ${pinned ? 'pinned' : ''}`} style={{ backgroundColor: selectedColor }}>
-      {title && <h3>{title}</h3>}
-      {content && <p>{content}</p>}
-      {image && (
-        <div className="image-preview">
-          <img
-            src={image}
-            alt="Note"
-            style={{ width: '100%', height: 'auto', cursor: 'pointer' }}
-            onClick={() => openModal()}
-          />
-        </div>
-      )}
-      <input
-        type="color"
-        value={selectedColor}
-        onChange={handleColorChange}
-      />
-      <button onClick={onPin}>Pin</button>
-      <button onClick={onDelete}>Delete</button>
-      {content && (
-        <button onClick={openModal}>View</button>
-      )}
+      <div className='note-content'>
+        {title && <h3>{title}</h3>}
+        {content && <p>{content}</p>}
+        {image && (
+          <div className="image-preview">
+            <img
+              src={image}
+              alt="Note"
+              style={{ width: '100%', height: 'auto', cursor: 'pointer' }}
+              onClick={() => openModal()}
+            />
+          </div>
+        )}
+      </div>
+      <div className='note-actions'>
+        <input
+          type="color"
+          value={selectedColor}
+          onChange={handleColorChange}
+        />
+        <button onClick={onPin}>{pinned ? 'Unpin' : 'Pin'}</button>
+        <button onClick={onDelete}>Delete</button>
+        {content && (
+          <button onClick={openModal}>View</button>
+        )}
+      </div>
+      
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}

@@ -5,7 +5,9 @@ import NoteForm from './components/NoteForm';
 const App = () => {
   return (
     <div className="app">
-      <h1>Note Taking App</h1>
+      <h1 style={{
+        textAlign: 'center'
+      }}>Note Taking App</h1>
       <NoteForm />
       <NoteList />
     </div>
