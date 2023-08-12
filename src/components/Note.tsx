@@ -2,11 +2,33 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import './Note.css'; 
 
-const Note = ({ id, title, content, pinned, color, image, onDelete, onPin, onColorChange }) => {
+interface NoteProps {
+  id: string;
+  title: string;
+  content: string;
+  pinned: boolean;
+  color: string;
+  image: string | null;
+  onDelete: () => void;
+  onPin: () => void;
+  onColorChange: (id: string, color: string) => void;
+}
+
+const Note: React.FC<NoteProps> = ({
+  id,
+  title,
+  content,
+  pinned,
+  color,
+  image,
+  onDelete,
+  onPin,
+  onColorChange
+}) => {
   const [selectedColor, setSelectedColor] = useState(color);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const handleColorChange = (e) => {
+  const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const colorValue = e.target.value;
     setSelectedColor(colorValue);
     onColorChange(id, colorValue);

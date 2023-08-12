@@ -3,7 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deleteNote, pinNote, changeNoteColor } from '../redux/actions';
 import Note from './Note';
 
-const NoteList = () => {
+
+interface NoteListProps {}
+
+const NoteList: React.FC<NoteListProps> = () => {
   const notes = useSelector((state) => state.notes);
   const dispatch = useDispatch();
 

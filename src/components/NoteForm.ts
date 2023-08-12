@@ -3,7 +3,12 @@ import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { addNote } from '../redux/actions';
 
-const NoteForm = () => {
+
+
+interface NoteFormProps {}
+
+
+const NoteForm: React.FC<NoteFormProps> = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
